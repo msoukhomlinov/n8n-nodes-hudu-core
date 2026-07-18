@@ -1,0 +1,1 @@
+// Intentionally empty: heavy asset loaders removed due to scale concerns

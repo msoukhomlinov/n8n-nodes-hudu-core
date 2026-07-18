@@ -1,0 +1,382 @@
+export const HUDU_API_CONSTANTS = {
+  PAGE_SIZE: 25,
+  DEFAULT_PAGE: 1,
+  BASE_API_PATH: '/api/v1',
+} as const;
+
+/**
+ * Rate limiting configuration to prevent 429 errors
+ * Hudu API rate limit: 300 requests per minute (5 requests per second)
+ */
+export const RATE_LIMIT_CONFIG = {
+  // Retry logic for 429 errors
+  MAX_RETRIES: 10,          // Maximum retry attempts for rate limit errors
+  BASE_DELAY_MS: 1000,     // Base delay for exponential backoff
+  MAX_DELAY_MS: 10000,     // 10s maximum delay cap for exponential backoff
+  JITTER_MS: 500,          // Random jitter to prevent thundering herd
+} as const;
+
+/**
+ * Comprehensive list of field types available in Hudu asset layouts
+ */
+export const ASSET_LAYOUT_FIELD_TYPES = {
+  TEXT: 'Text',
+  RICH_TEXT: 'RichText',
+  HEADING: 'Heading',
+  CHECKBOX: 'CheckBox',
+  WEBSITE: 'Website',
+  PASSWORD: 'Password',
+  NUMBER: 'Number',
+  DATE: 'Date',
+  LIST_SELECT: 'ListSelect',
+  EMBED: 'Embed',
+  EMAIL: 'Email',
+  PHONE: 'Phone',
+  ASSET_TAG: 'AssetTag',
+  RELATION: 'Relation',
+  ADDRESS_DATA: 'AddressData',
+  DROPDOWN: 'Dropdown',
+} as const;
+
+/**
+ * Default labels for field types in Hudu asset layouts
+ */
+export const ASSET_LAYOUT_FIELD_LABELS = {
+  [ASSET_LAYOUT_FIELD_TYPES.TEXT]: 'Text',
+  [ASSET_LAYOUT_FIELD_TYPES.RICH_TEXT]: 'Rich Text',
+  [ASSET_LAYOUT_FIELD_TYPES.HEADING]: 'Heading',
+  [ASSET_LAYOUT_FIELD_TYPES.CHECKBOX]: 'Check Box',
+  [ASSET_LAYOUT_FIELD_TYPES.WEBSITE]: 'Link',
+  [ASSET_LAYOUT_FIELD_TYPES.PASSWORD]: 'Confidential Text',
+  [ASSET_LAYOUT_FIELD_TYPES.NUMBER]: 'Number',
+  [ASSET_LAYOUT_FIELD_TYPES.DATE]: 'Date',
+  [ASSET_LAYOUT_FIELD_TYPES.LIST_SELECT]: 'List',
+  [ASSET_LAYOUT_FIELD_TYPES.EMBED]: 'Embed',
+  [ASSET_LAYOUT_FIELD_TYPES.EMAIL]: 'Copyable Text',
+  [ASSET_LAYOUT_FIELD_TYPES.PHONE]: 'Phone',
+  [ASSET_LAYOUT_FIELD_TYPES.ASSET_TAG]: 'Asset Link',
+  [ASSET_LAYOUT_FIELD_TYPES.ADDRESS_DATA]: 'Address',
+} as const;
+
+/**
+ * Comprehensive list of available integration slugs in Hudu
+ */
+export const INTEGRATION_SLUGS = [
+  'office_365',
+  'autotask',
+  'cw_manage',
+  'bms',
+  'syncro',
+  'domotz',
+  'quickpass',
+  'cloudradial',
+  'auvik',
+  'liongard',
+  'ninja',
+  'dattormm',
+  'atera',
+  'nsight',
+  'halo',
+  'pulseway_rmm',
+  'repairshopr',
+  'datto',
+  'watchman',
+  'mapbox',
+  'openai',
+  'superops',
+  'unifi',
+  'ncentral',
+  'meraki',
+  'addigy',
+  'cloudflare',
+  'level',
+] as const;
+
+/**
+ * Resources that support the page_size parameter in their GET/List operations.
+ * This parameter can be used in combination with pagination to control the number
+ * of records returned per page (up to the default limit of 25).
+ *
+ * Note: For /companies endpoints, only the main listing endpoint and the nested assets endpoint
+ * support pagination (i.e., /companies and /companies/{id}/assets).
+ * Other nested endpoints under /companies do not support pagination.
+ */
+export const RESOURCES_WITH_PAGE_SIZE = [
+  'activity_logs',
+  'articles',
+  'assets',
+  'asset_layouts',
+  'asset_passwords',
+  'companies',
+  'companies/assets',
+  'expirations',
+  'folders',
+  'magic_dash',
+  'matchers',
+  'password_folders',
+  'groups',
+  'label_types',
+  'labels',
+  'procedures',
+  'photos',
+  'public_photos',
+  'relations',
+  'uploads',
+  'users',
+  'websites',
+] as const;
+
+/**
+ * Comprehensive list of activity log actions in Hudu
+ */
+export const ACTIVITY_LOG_ACTIONS = [
+  'archived',
+  'attempted sign-in - false',
+  'attempted sign-in - not allowed at time',
+  'attempted sign-in - not allowed today',
+  'changed sharing',
+  'CheckLicensingJob failed',
+  'commented',
+  'completed task',
+  'created',
+  'created API key',
+  'created integration',
+  'created IP access control',
+  'deleted article',
+  'deleted asset',
+  'deleted company',
+  'deleted global process template',
+  'deleted integration',
+  'deleted password',
+  'deleted process',
+  'deleted website',
+  'edited comment',
+  'failed s3 export',
+  'made read-only',
+  'moved',
+  'removed file',
+  'removed IP access control',
+  'removed photo',
+  'reset article public token',
+  'reset otp',
+  'reverted',
+  'set expiration date',
+  'shared password',
+  'signed in',
+  'signed out due to deletion',
+  'started export',
+  'started impersonation',
+  'stopped impersonation',
+  'unarchived',
+  'uncompleted task',
+  'updated',
+  'updated assignment',
+  'updated completion notes',
+  'updated due date',
+  'updated group',
+  'updated integration',
+  'updated priority',
+  'updated profile',
+  'uploaded file',
+  'uploaded photo',
+  'viewed',
+  'viewed confidential text',
+  'viewed otp',
+  'viewed password',
+  'viewed PDF',
+  'viewed shared article',
+  'viewed shared information',
+  'viewed shared link',
+  'viewed shared secure note',
+] as const;
+
+/**
+ * Record types that Labels / Label Types may apply to (Hudu API 2.44+).
+ * Casing matches the API enum (IpAddress, not IPAddress).
+ */
+export const LABEL_RECORD_TYPES = [
+  'Article',
+  'Asset',
+  'AssetPassword',
+  'Website',
+  'IpAddress',
+  'Vlan',
+  'VlanZone',
+  'Procedure',
+  'Network',
+  'RackStorage',
+] as const;
+export type LabelRecordType = (typeof LABEL_RECORD_TYPES)[number];
+
+/** n8n UI options for labelable / applicable_record_types multi-selects. */
+export const LABEL_RECORD_TYPE_OPTIONS = LABEL_RECORD_TYPES.map((value) => ({
+  name: value,
+  value,
+}));
+
+/**
+ * Human-readable meanings for label record types — used in LLM tool descriptions.
+ */
+export const LABEL_RECORD_TYPE_DESCRIPTIONS: Record<LabelRecordType, string> = {
+  Article: 'knowledge base article',
+  Asset: 'hardware/device/other asset record',
+  AssetPassword: 'password entry',
+  Website: 'monitored website',
+  IpAddress: 'IP address record',
+  Vlan: 'VLAN record',
+  VlanZone: 'VLAN zone record',
+  Procedure: 'runbook/checklist',
+  Network: 'network record',
+  RackStorage: 'rack storage record',
+};
+
+/**
+ * Comprehensive list of resource types in Hudu
+ */
+export const RESOURCE_TYPES = [
+  'Article',
+  'Asset',
+  'AssetPassword',
+  'Company',
+  'Expiration',
+  'Folder',
+  'Group',
+  'Integrator',
+  'IPAddress',
+  'Network',
+  'Photo',
+  'Procedure',
+  'RackStorage',
+  'User',
+  'VaultPassword',
+  'Vlan',
+  'VlanZone',
+  'Website',
+] as const;
+
+/** IP address status values (single source of truth for both UI options and AI schemas). */
+export const IP_ADDRESS_STATUSES = [
+    'unassigned', 'assigned', 'reserved', 'deprecated', 'dhcp', 'slaac',
+] as const;
+export type IpAddressStatus = typeof IP_ADDRESS_STATUSES[number];
+
+/** n8n UI option objects for IP address status dropdowns (3 places → 1). */
+export const IP_ADDRESS_STATUS_OPTIONS = [
+    { name: 'Unassigned', value: 'unassigned' },
+    { name: 'Assigned',   value: 'assigned'   },
+    { name: 'Reserved',   value: 'reserved'   },
+    { name: 'Deprecated', value: 'deprecated' },
+    { name: 'DHCP',       value: 'dhcp'       },
+    { name: 'SLAAC',      value: 'slaac'      },
+] as const;
+
+/**
+ * Human-readable meanings for IP address status values — used in LLM tool descriptions.
+ * Edit here; all three AI schema functions (getAll/create/update) update automatically.
+ */
+export const IP_ADDRESS_STATUS_DESCRIPTIONS: Record<IpAddressStatus, string> = {
+    unassigned:  'not in use',
+    assigned:    'actively in use by a host/device',
+    reserved:    'held for specific use, not currently assigned',
+    deprecated:  'previously used, no longer active',
+    dhcp:        'allocated dynamically via DHCP',
+    slaac:       'assigned via IPv6 SLAAC',
+};
+
+/**
+ * Human-readable meanings for Hudu resource type names — used in LLM tool descriptions.
+ * Covers all values in RESOURCE_TYPES. Edit here; all AI schemas update automatically.
+ */
+export const RESOURCE_TYPE_DESCRIPTIONS: Record<string, string> = {
+    Article:       'knowledge base article',
+    Asset:         'hardware/device/other asset record',
+    AssetPassword: 'password entry',
+    Company:       'organisation/client',
+    Expiration:    'expiration record',
+    Folder:        'folder of articles',
+    Group:         'user group',
+    Integrator:    'integration record',
+    IPAddress:     'IP address record',
+    Network:       'network record',
+    Photo:         'photo record',
+    Procedure:     'runbook/checklist',
+    RackStorage:   'rack storage record',
+    User:          'Hudu user account',
+    VaultPassword: 'vault password',
+    Vlan:          'VLAN record',
+    VlanZone:      'VLAN zone record',
+    Website:       'web login record',
+};
+
+/**
+ * Activity log response fields (alphabetically sorted by display name)
+ */
+export const ACTIVITY_LOG_FIELDS = [
+  { name: 'Action', value: 'action' },
+  { name: 'Agent String', value: 'agent_string' },
+  { name: 'App Type', value: 'app_type' },
+  { name: 'Company Name', value: 'company_name' },
+  { name: 'Created At', value: 'created_at' },
+  { name: 'Details', value: 'details' },
+  { name: 'Device', value: 'device' },
+  { name: 'Formatted Datetime', value: 'formatted_datetime' },
+  { name: 'ID', value: 'id' },
+  { name: 'IP Address', value: 'ip_address' },
+  { name: 'Original Record Name', value: 'original_record_name' },
+  { name: 'OS', value: 'os' },
+  { name: 'Record Company URL', value: 'record_company_url' },
+  { name: 'Record ID', value: 'record_id' },
+  { name: 'Record Name', value: 'record_name' },
+  { name: 'Record Type', value: 'record_type' },
+  { name: 'Record URL', value: 'record_url' },
+  { name: 'Record User URL', value: 'record_user_url' },
+  { name: 'Token', value: 'token' },
+  { name: 'URL', value: 'url' },
+  { name: 'User Email', value: 'user_email' },
+  { name: 'User ID', value: 'user_id' },
+  { name: 'User Initials', value: 'user_initials' },
+  { name: 'User Name', value: 'user_name' },
+  { name: 'User Short Name', value: 'user_short_name' },
+] as const;
+
+/** Procedure (process/run) status values. */
+export const PROCEDURE_STATUSES = ['Not Started', 'In Progress', 'Completed', 'Cancelled'] as const;
+export type ProcedureStatus = typeof PROCEDURE_STATUSES[number];
+
+/** Procedure type filter values for getAll. */
+export const PROCEDURE_TYPES = ['process', 'run', 'all'] as const;
+export type ProcedureType = typeof PROCEDURE_TYPES[number];
+
+/** Procedure scope values. */
+export const PROCEDURE_SCOPES = ['global', 'company'] as const;
+export type ProcedureScope = typeof PROCEDURE_SCOPES[number];
+
+/** Folder type values. */
+export const FOLDER_TYPES = ['article', 'photo'] as const;
+export type FolderType = typeof FOLDER_TYPES[number];
+
+/** Procedure task priority levels. */
+export const PROCEDURE_TASK_PRIORITIES = ['unsure', 'low', 'normal', 'high', 'urgent'] as const;
+export type ProcedureTaskPriority = typeof PROCEDURE_TASK_PRIORITIES[number];
+
+// General date format constants
+export const DATE_FORMAT = 'YYYY-MM-DD';
+export const TIME_FORMAT = 'HH:mm:ss';
+export const DATETIME_FORMAT = `${DATE_FORMAT} ${TIME_FORMAT}`;
+
+// Operation constants
+export const OPERATION = {
+  CREATE: 'create',
+  DELETE: 'delete',
+  GET: 'get',
+  GET_ALL: 'getAll',
+  GET_MANY: 'getMany',
+  UPDATE: 'update',
+  DOWNLOAD: 'download',
+  UPLOAD: 'upload',
+  STATUS: {
+    EXECUTING: 'running',
+    SUCCEEDED: 'success',
+    FAILED: 'failed',
+  },
+};
