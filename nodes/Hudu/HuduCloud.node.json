@@ -1,5 +1,5 @@
 {
-  "node": "n8n-nodes-hudu-cloud.hudu",
+  "node": "n8n-nodes-hudu-cloud.huduCloud",
   "nodeVersion": "1.0",
   "codexVersion": "1.0",
   "categories": ["Data & Storage"],

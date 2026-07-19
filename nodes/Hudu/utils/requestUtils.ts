@@ -178,7 +178,7 @@ export async function executeHuduRequest(
       }
 
       // Get the raw response — n8n injects auth headers via the authenticate property on HuduApi.credentials.ts
-      const rawResponse = await this.helpers.httpRequestWithAuthentication.call(this, 'huduApi', requestOptions);
+      const rawResponse = await this.helpers.httpRequestWithAuthentication.call(this, 'huduCloudApi', requestOptions);
       
       if (DEBUG_CONFIG.API_RESPONSE) {
         debugLog('[API_RESPONSE] Hudu API Response:', {
@@ -397,7 +397,7 @@ export async function huduApiRequest(
   qs: IDataObject = {},
   resourceName?: string,
 ): Promise<IDataObject | IDataObject[]> {
-  const credentials = await this.getCredentials('huduApi');
+  const credentials = await this.getCredentials('huduCloudApi');
   const requestOptions = createHuduRequest(credentials, { method, endpoint, body, qs });
   const response = await executeHuduRequest.call(this, requestOptions);
   return resourceName ? parseHuduResponse(response, resourceName) : response;
@@ -518,7 +518,7 @@ export async function handleBinaryDownload(
   binaryPropertyName: string,
   itemIndex: number,
 ): Promise<IDataObject> {
-  const credentials = await this.getCredentials('huduApi');
+  const credentials = await this.getCredentials('huduCloudApi');
   if (!credentials?.baseUrl) {
     throw new Error('Missing API credentials. Please provide the base URL.');
   }
@@ -528,7 +528,7 @@ export async function handleBinaryDownload(
   // encoding: 'arraybuffer' returns a Buffer; returnFullResponse gives us headers.
   const response = await this.helpers.httpRequestWithAuthentication.call(
     this,
-    'huduApi',
+    'huduCloudApi',
     {
       method: 'GET',
       url,

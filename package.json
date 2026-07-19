@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-hudu-cloud",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "n8n Cloud-verifiable node for Hudu's API (zero runtime dependencies). For full features including AI Tools, use n8n-nodes-hudu (self-hosted).",
   "keywords": [
     "n8n-community-node-package",
@@ -43,10 +43,10 @@
     "n8nNodesApiVersion": 1,
     "strict": true,
     "credentials": [
-      "dist/credentials/HuduApi.credentials.js"
+      "dist/credentials/HuduCloudApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/Hudu/Hudu.node.js"
+      "dist/nodes/Hudu/HuduCloud.node.js"
     ]
   },
   "engines": {

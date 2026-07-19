@@ -26,17 +26,17 @@ import { mapAssetLayoutFieldsForResource } from './optionLoaders/asset_layouts/g
 
 type LoadOptionsHandler = (this: ILoadOptionsFunctions, ...args: unknown[]) => Promise<INodePropertyOptions[]>;
 
-export class Hudu implements INodeType {
+export class HuduCloud implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Hudu',
-		name: 'hudu',
+		displayName: 'Hudu (n8n Cloud)',
+		name: 'huduCloud',
 		icon: 'file:hudu.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 		description: 'Interact with Hudu REST API',
 		defaults: {
-			name: 'Hudu',
+			name: 'Hudu (n8n Cloud)',
 		},
 		usableAsTool: true,
 		inputs: [NodeConnectionTypes.Main],
@@ -44,7 +44,7 @@ export class Hudu implements INodeType {
 		
 		credentials: [
 			{
-				name: 'huduApi',
+				name: 'huduCloudApi',
 				required: true,
 			},
 		],

@@ -10,6 +10,8 @@ This community node enables seamless integration with the Hudu documentation pla
 
 > **Note — Hudu AI Tools not included in this edition:** the dedicated **Hudu AI Tools** node (the `HuduAiTools` supplyData tool / MCP Server Trigger tool) is **not** part of this package. For the full feature set, including that dedicated AI Tools node, see **[n8n-nodes-hudu](https://github.com/msoukhomlinov/n8n-nodes-hudu)** (self-hosted). This package, `n8n-nodes-hudu-cloud`, is the n8n Cloud–verifiable edition and still supports **AI Agent tool use** via the main **Hudu** node's `usableAsTool` capability — every resource/operation on the Hudu node is automatically exposed to AI agents, no separate node required.
 
+> **Node name & co-existence:** to allow this edition and the full self-hosted **[n8n-nodes-hudu](https://github.com/msoukhomlinov/n8n-nodes-hudu)** to be installed on the **same** n8n instance, this package registers a distinct node and credential. In the node picker it appears as **"Hudu (n8n Cloud)"** and uses the **"Hudu Verified API"** credential (internal types `huduCloud` / `huduCloudApi`), whereas the full package uses **"Hudu"** / **"Hudu API"**. Because the node types differ, workflows built on one edition are **not** interchangeable with the other.
+
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow.svg)](https://buymeacoffee.com/msoukhomlinov)
 
 
@@ -23,7 +25,7 @@ To use this node, you need to:
 
 1. Have a Hudu instance
 2. Generate an API key in your Hudu settings
-3. Configure the node with:
+3. Create a **Hudu Verified API** credential with:
    - Base URL (e.g., https://your-hudu-instance.com)
    - API Key
 
