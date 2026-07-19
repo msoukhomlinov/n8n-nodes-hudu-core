@@ -5,9 +5,9 @@ import type {
   INodeProperties,
 } from 'n8n-workflow';
 
-export class HuduCloudApi implements ICredentialType {
-  name = 'huduCloudApi';
-  displayName = 'Hudu Verified API';
+export class HuduCoreApi implements ICredentialType {
+  name = 'huduCoreApi';
+  displayName = 'Hudu Core API';
   documentationUrl = 'https://support.hudu.com/hc/en-us/articles/23389700237339-REST-API';
   icon = 'file:hudu.svg' as const;
   properties: INodeProperties[] = [

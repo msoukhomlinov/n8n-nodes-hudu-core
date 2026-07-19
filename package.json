@@ -1,5 +1,5 @@
 {
-  "name": "n8n-nodes-hudu-cloud",
+  "name": "n8n-nodes-hudu-core",
   "version": "2.0.0",
   "description": "n8n Cloud-verifiable node for Hudu's API (zero runtime dependencies). For full features including AI Tools, use n8n-nodes-hudu (self-hosted).",
   "keywords": [
@@ -14,14 +14,14 @@
     "data-operations"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/msoukhomlinov/n8n-nodes-hudu-cloud",
+  "homepage": "https://github.com/msoukhomlinov/n8n-nodes-hudu-core",
   "author": {
     "name": "Max Soukhomlinov",
     "email": "maxs@intellectit.com.au"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/msoukhomlinov/n8n-nodes-hudu-cloud.git"
+    "url": "git+https://github.com/msoukhomlinov/n8n-nodes-hudu-core.git"
   },
   "scripts": {
     "build": "n8n-node build",
@@ -43,10 +43,10 @@
     "n8nNodesApiVersion": 1,
     "strict": true,
     "credentials": [
-      "dist/credentials/HuduCloudApi.credentials.js"
+      "dist/credentials/HuduCoreApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/Hudu/HuduCloud.node.js"
+      "dist/nodes/Hudu/HuduCore.node.js"
     ]
   },
   "engines": {

@@ -1,11 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [2.0.0] - 2026-07-19
+## [2.0.0] - 2026-07-20
 
 ### Changed (breaking)
-- **Renamed the node and credential types so this edition can be installed alongside the full [n8n-nodes-hudu](https://github.com/msoukhomlinov/n8n-nodes-hudu) package on the same n8n instance.** The node is now **"Hudu (n8n Cloud)"** (internal type `huduCloud`) and the credential is **"Hudu Verified API"** (internal type `huduCloudApi`); the node file is `HuduCloud.node.ts`. Previously both were `hudu` / `huduApi`, which collided with the full package (n8n keys installed node and credential types by name, so the two could not co-exist).
-- **Breaking:** existing workflows and credentials created against the 1.0.0 `hudu` / `huduApi` types will not carry over — re-add the "Hudu (n8n Cloud)" node and re-create the "Hudu Verified API" credential. (1.0.0 had negligible installs.)
+- **Package renamed `n8n-nodes-hudu-cloud` → `n8n-nodes-hudu-core`.** The old package is deprecated on npm; install `n8n-nodes-hudu-core` going forward.
+- **Renamed the node and credential types so this edition can be installed alongside the full [n8n-nodes-hudu](https://github.com/msoukhomlinov/n8n-nodes-hudu) package on the same n8n instance.** The node is now **"Hudu Core"** (internal type `huduCore`, file `HuduCore.node.ts`) and the credential **"Hudu Core API"** (internal type `huduCoreApi`). Previously both were `hudu` / `huduApi`, which collided with the full package — n8n keys installed node and credential types by name, so the two could not co-exist.
+- **Breaking:** 1.0.0 (published as `n8n-nodes-hudu-cloud`) used the `hudu` / `huduApi` types; existing installs, workflows, and credentials will not carry over. Install `n8n-nodes-hudu-core`, add the **Hudu Core** node, and create a **Hudu Core API** credential. (1.0.0 had negligible installs.)
 
 ## [1.0.0] - 2026-07-18
 Initial release. n8n Cloud–verifiable edition of the Hudu node, derived from n8n-nodes-hudu 2.7.0.

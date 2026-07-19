@@ -1,16 +1,16 @@
-# n8n-nodes-hudu-cloud
+# n8n-nodes-hudu-core
 This community node enables seamless integration with the Hudu documentation platform in your n8n workflows, allowing you to automate and manage your IT documentation tasks.
 
-![n8n-nodes-hudu-cloud](https://img.shields.io/badge/n8n--nodes--hudu--cloud-latest-blue)
+![n8n-nodes-hudu-core](https://img.shields.io/badge/n8n--nodes--hudu--core-latest-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-> **"Cloud" means n8n Cloud:** the "Cloud" in this package's name refers to **n8n Cloud** (the hosted n8n platform at n8n.io) — this package is built with zero runtime dependencies so it can pass n8n's community-node verification and be installed on n8n Cloud. It has nothing to do with Hudu's own hosting — it talks to the same Hudu REST API whether your Hudu instance is self-hosted or Hudu-hosted.
+> **What "Core" means:** this is the lean, **zero-runtime-dependency** edition of the Hudu node — the same `Hudu` REST API coverage as the full **[n8n-nodes-hudu](https://github.com/msoukhomlinov/n8n-nodes-hudu)**, minus the dedicated AI Tools node. Having zero dependencies is what lets it pass n8n's community-node verification and be installed on **n8n Cloud** (the hosted n8n platform at n8n.io). It talks to the same Hudu REST API whether your Hudu instance is self-hosted or Hudu-hosted. (Formerly published as `n8n-nodes-hudu-cloud`.)
 
 > **API Compatibility:** This node is aligned with Hudu API version 2.44.0 (reference: `api-docs-v2.44.0.json` in this repository). Some features require specific API versions. Compatibility with future Hudu versions is not guaranteed without further updates.
 
-> **Note — Hudu AI Tools not included in this edition:** the dedicated **Hudu AI Tools** node (the `HuduAiTools` supplyData tool / MCP Server Trigger tool) is **not** part of this package. For the full feature set, including that dedicated AI Tools node, see **[n8n-nodes-hudu](https://github.com/msoukhomlinov/n8n-nodes-hudu)** (self-hosted). This package, `n8n-nodes-hudu-cloud`, is the n8n Cloud–verifiable edition and still supports **AI Agent tool use** via the main **Hudu** node's `usableAsTool` capability — every resource/operation on the Hudu node is automatically exposed to AI agents, no separate node required.
+> **Note — Hudu AI Tools not included in this edition:** the dedicated **Hudu AI Tools** node (the `HuduAiTools` supplyData tool / MCP Server Trigger tool) is **not** part of this package. For the full feature set, including that dedicated AI Tools node, see **[n8n-nodes-hudu](https://github.com/msoukhomlinov/n8n-nodes-hudu)** (self-hosted). This package, `n8n-nodes-hudu-core`, is the n8n Cloud–verifiable edition and still supports **AI Agent tool use** via the main **Hudu** node's `usableAsTool` capability — every resource/operation on the Hudu node is automatically exposed to AI agents, no separate node required.
 
-> **Node name & co-existence:** to allow this edition and the full self-hosted **[n8n-nodes-hudu](https://github.com/msoukhomlinov/n8n-nodes-hudu)** to be installed on the **same** n8n instance, this package registers a distinct node and credential. In the node picker it appears as **"Hudu (n8n Cloud)"** and uses the **"Hudu Verified API"** credential (internal types `huduCloud` / `huduCloudApi`), whereas the full package uses **"Hudu"** / **"Hudu API"**. Because the node types differ, workflows built on one edition are **not** interchangeable with the other.
+> **Node name & co-existence:** to allow this edition and the full self-hosted **[n8n-nodes-hudu](https://github.com/msoukhomlinov/n8n-nodes-hudu)** to be installed on the **same** n8n instance, this package registers a distinct node and credential. In the node picker it appears as **"Hudu Core"** and uses the **"Hudu Core API"** credential (internal types `huduCore` / `huduCoreApi`), whereas the full package uses **"Hudu"** / **"Hudu API"**. Because the node types differ, workflows built on one edition are **not** interchangeable with the other.
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow.svg)](https://buymeacoffee.com/msoukhomlinov)
 
@@ -25,7 +25,7 @@ To use this node, you need to:
 
 1. Have a Hudu instance
 2. Generate an API key in your Hudu settings
-3. Create a **Hudu Verified API** credential with:
+3. Create a **Hudu Core API** credential with:
    - Base URL (e.g., https://your-hudu-instance.com)
    - API Key
 
@@ -212,7 +212,7 @@ For a dedicated Hudu AI Tools node exposing a unified, per-resource tool model (
 
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
 - [Hudu API Documentation](https://your-hudu-instance.com/api-docs)
-- [GitHub Repository](https://github.com/msoukhomlinov/n8n-nodes-hudu-cloud)
+- [GitHub Repository](https://github.com/msoukhomlinov/n8n-nodes-hudu-core)
 
 ## Development
 
