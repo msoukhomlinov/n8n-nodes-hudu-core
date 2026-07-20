@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.1] - 2026-07-20
+
+### Changed
+- Republished with **npm provenance** via GitHub Actions — required for n8n Cloud community-node verification (2.0.0 was published without provenance and was rejected by the Creator Portal). No functional changes from 2.0.0. The publish workflow uses `npm install` (this repo does not commit a lockfile).
+
 ## [2.0.0] - 2026-07-20
 
 ### Changed (breaking)
