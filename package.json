@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-hudu-core",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "n8n Cloud-verifiable node for Hudu's API (zero runtime dependencies). For full features including AI Tools, use n8n-nodes-hudu (self-hosted).",
   "keywords": [
     "n8n-community-node-package",

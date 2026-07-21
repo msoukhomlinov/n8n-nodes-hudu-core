@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2026-07-22
+
+### Fixed
+- Removed the unsupported `subcategories` field from the node codex file (`HuduCore.node.json`). Only `node`, `nodeVersion`, `codexVersion`, `categories`, `resources`, and `alias` are part of the codex schema; the extra field was silently ignored by n8n. Flagged in n8n Creator Portal verification.
+- Option loaders no longer swallow API errors silently. Six `loadOptions` handlers (`getAssetLayouts`, `getCompanies`, `getUsers`, `getGroups`, `getVlanZones`, `getAssetLayoutFieldValues`) now log the error via `debugLog('[OPTION_LOADING] Error …', error)` before returning an empty list, matching the existing pattern in `getLists` and `loadLabelTypes`. Misconfigured credentials or API failures are now traceable instead of surfacing as an empty dropdown with no diagnostic.
+
 ## [2.0.1] - 2026-07-20
 
 ### Changed
