@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.1] - 2026-07-22
+
+### Fixed
+- Best-effort enrichment lookups no longer swallow API errors silently. Five company/folder enrichment catches in the Articles and Folders handlers now log via `debugLog('[ENRICHMENT] … failed …', error)` before falling back to a default, matching the `[OPTION_LOADING]` pattern applied to the option loaders in 2.1.0. These remain non-fatal (a failed optional lookup still skips enrichment rather than aborting the operation) but are now traceable.
+
 ## [2.1.0] - 2026-07-22
 
 ### Fixed
