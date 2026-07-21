@@ -153,8 +153,9 @@ export async function handleArticlesOperation(
             if (company && company.name) {
               companyForEnrichment = company;
             }
-          } catch {
+          } catch (error) {
             // If company lookup fails, skip company-based enrichment
+            debugLog('[ENRICHMENT] Company lookup failed, skipping enrichment:', error);
           }
         }
 
@@ -331,8 +332,9 @@ export async function handleArticlesOperation(
                   path,
                 });
               }
-            } catch {
+            } catch (error) {
               // If a folder lookup fails, skip enrichment for that folder_id
+              debugLog('[ENRICHMENT] Folder lookup failed, skipping enrichment:', error);
             }
           }
 
@@ -349,8 +351,9 @@ export async function handleArticlesOperation(
                 if (company && company.name) {
                   companyCache.set(companyId, company.name);
                 }
-              } catch {
+              } catch (error) {
                 // If a company lookup fails, skip enrichment for that company_id
+                debugLog('[ENRICHMENT] Company lookup failed, skipping enrichment:', error);
               }
             }
           }
