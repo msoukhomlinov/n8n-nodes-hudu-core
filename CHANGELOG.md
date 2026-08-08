@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.2.0] - 2026-07-XX
+
+### Added
+- **Relations API-side filtering (Hudu API 2.44.0+).** The Relations Get Many operation now passes all filter parameters (`created_at`, `description`, `fromable_id`, `fromable_type`, `is_inverse`, `toable_id`, `toable_type`, `updated_at`) as native query parameters to the Hudu API, replacing the previous client-side filtering approach. This eliminates the performance penalty of fetching all relations and filtering locally. Filter dropdowns no longer display the 🐌 client-side filtering indicator.
+- **Relations timestamp fields.** The `IRelation` interface now includes `created_at` and `updated_at` fields (ISO 8601), matching Hudu API 2.44.2.
+- **Expanded relation record types.** The `fromable_type` and `toable_type` dropdowns now include all 11 API-supported record types: Asset, Website, Procedure, AssetPassword, Company, Article, Network, IpAddress, Vlan, VlanZone, and RackStorage (previously limited to 6).
+
 ## [2.1.1] - 2026-07-22
 
 ### Fixed
