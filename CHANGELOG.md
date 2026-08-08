@@ -1,12 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [2.2.0] - 2026-07-XX
+## [2.2.0] - 2026-08-08
 
 ### Added
-- **Relations API-side filtering (Hudu API 2.44.0+).** The Relations Get Many operation now passes all filter parameters (`created_at`, `description`, `fromable_id`, `fromable_type`, `is_inverse`, `toable_id`, `toable_type`, `updated_at`) as native query parameters to the Hudu API, replacing the previous client-side filtering approach. This eliminates the performance penalty of fetching all relations and filtering locally. Filter dropdowns no longer display the 🐌 client-side filtering indicator.
+- **Relations API-side filtering (requires Hudu API 2.44.1+).** The Relations Get Many operation now passes all filter parameters (`created_at`, `description`, `fromable_id`, `fromable_type`, `is_inverse`, `toable_id`, `toable_type`, `updated_at`) as native query parameters to the Hudu API, replacing the previous client-side filtering approach. This eliminates the performance penalty of fetching all relations and filtering locally. Filter dropdowns no longer display the 🐌 client-side filtering indicator.
 - **Relations timestamp fields.** The `IRelation` interface now includes `created_at` and `updated_at` fields (ISO 8601), matching Hudu API 2.44.2.
 - **Expanded relation record types.** The `fromable_type` and `toable_type` dropdowns now include all 11 API-supported record types: Asset, Website, Procedure, AssetPassword, Company, Article, Network, IpAddress, Vlan, VlanZone, and RackStorage (previously limited to 6).
+
+### Removed
+- Unused `LABEL_RECORD_TYPE_DESCRIPTIONS` and `RELATION_RECORD_TYPE_DESCRIPTIONS` constants. These exist to feed LLM tool descriptions in the full `n8n-nodes-hudu` package; this edition has no `ai-tools/` runtime, so nothing referenced them.
+
+### Breaking
+- **Relations filters now require Hudu 2.44.1 or newer.** The `/relations` filter query parameters were introduced in Hudu 2.44.1; the client-side filtering fallback that previously made these filters work on any Hudu version has been removed. On instances below 2.44.1 the API silently ignores the unknown query parameters, so Relations Get Many returns **unfiltered** results. Upgrade Hudu to 2.44.1+ before relying on these filters.
 
 ## [2.1.1] - 2026-07-22
 

@@ -157,9 +157,10 @@ To use this node, you need to:
 - Track task completion
 
 ### Relations
-- Create and manage resource relationships
-- Support for various resource types
-- Filter by relationship types and directions
+- Create, delete and list relationships between records
+- Supports all 11 API record types for both ends of a relation: Asset, Website, Procedure, AssetPassword, Company, Article, Network, IpAddress, Vlan, VlanZone, RackStorage
+- Filters: created_at, description, fromable_id, fromable_type, is_inverse, toable_id, toable_type, updated_at; supports pagination
+- Filtering is performed API-side and **requires Hudu 2.44.1+**. On older instances the API ignores these parameters and returns unfiltered results.
 
 ### Groups
 - Retrieve groups and retrieve a group by ID

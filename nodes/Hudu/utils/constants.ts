@@ -215,22 +215,6 @@ export const LABEL_RECORD_TYPE_OPTIONS = LABEL_RECORD_TYPES.map((value) => ({
 }));
 
 /**
- * Human-readable meanings for label record types — used in LLM tool descriptions.
- */
-export const LABEL_RECORD_TYPE_DESCRIPTIONS: Record<LabelRecordType, string> = {
-  Article: 'knowledge base article',
-  Asset: 'hardware/device/other asset record',
-  AssetPassword: 'password entry',
-  Website: 'monitored website',
-  IpAddress: 'IP address record',
-  Vlan: 'VLAN record',
-  VlanZone: 'VLAN zone record',
-  Procedure: 'runbook/checklist',
-  Network: 'network record',
-  RackStorage: 'rack storage record',
-};
-
-/**
  * Record types allowed on Relations fromable_type / toable_type (Hudu API 2.44.2+).
  * Casing matches the API enum (IpAddress, not IPAddress). Includes Company (unlike labels).
  */
@@ -254,23 +238,6 @@ export const RELATION_RECORD_TYPE_OPTIONS = RELATION_RECORD_TYPES.map((value) =>
   name: value.replace(/([A-Z])/g, ' $1').trim(),
   value,
 }));
-
-/**
- * Human-readable meanings for relation record types — used in LLM tool descriptions.
- */
-export const RELATION_RECORD_TYPE_DESCRIPTIONS: Record<RelationRecordType, string> = {
-  Asset: 'hardware/device/other asset record',
-  Website: 'monitored website',
-  Procedure: 'runbook/checklist',
-  AssetPassword: 'password entry',
-  Company: 'organisation/client',
-  Article: 'knowledge base article',
-  Network: 'network record',
-  IpAddress: 'IP address record',
-  Vlan: 'VLAN record',
-  VlanZone: 'VLAN zone record',
-  RackStorage: 'rack storage record',
-};
 
 /**
  * Comprehensive list of resource types in Hudu
