@@ -6,7 +6,7 @@ This community node enables seamless integration with the Hudu documentation pla
 
 > **What "Core" means:** this is the lean, **zero-runtime-dependency** edition of the Hudu node — the same `Hudu` REST API coverage as the full **[n8n-nodes-hudu](https://github.com/msoukhomlinov/n8n-nodes-hudu)**, minus the dedicated AI Tools node. Having zero dependencies is what lets it pass n8n's community-node verification and be installed on **n8n Cloud** (the hosted n8n platform at n8n.io). It talks to the same Hudu REST API whether your Hudu instance is self-hosted or Hudu-hosted. (Formerly published as `n8n-nodes-hudu-cloud`.)
 
-> **API Compatibility:** This node is aligned with Hudu API version 2.44.2 (reference: `api-docs-v2.44.2.json` in this repository). Some features require specific API versions. Compatibility with future Hudu versions is not guaranteed without further updates.
+> **API Compatibility:** This node is aligned with Hudu API version 2.45.1 (reference: `api-docs-v2.45.1.json` in this repository). Some features require specific API versions. Compatibility with future Hudu versions is not guaranteed without further updates.
 
 > **Note — Hudu AI Tools not included in this edition:** the dedicated **Hudu AI Tools** node (the `HuduAiTools` supplyData tool / MCP Server Trigger tool) is **not** part of this package. For the full feature set, including that dedicated AI Tools node, see **[n8n-nodes-hudu](https://github.com/msoukhomlinov/n8n-nodes-hudu)** (self-hosted). This package, `n8n-nodes-hudu-core`, is the n8n Cloud–verifiable edition and still supports **AI Agent tool use** via the main **Hudu** node's `usableAsTool` capability — every resource/operation on the Hudu node is automatically exposed to AI agents, no separate node required.
 
@@ -49,7 +49,7 @@ To use this node, you need to:
 
 ### Activity Logs
 - Get all activity logs with comprehensive filtering support
-- Filter by user (ID or email), action, resource (ID and type), and date range
+- Filter by user (ID or email), action, resource type (optionally narrowed by resource ID, filtered server-side), and date range
 - Delete activity logs by datetime with optional unassigned logs filter
 
 ### API Info

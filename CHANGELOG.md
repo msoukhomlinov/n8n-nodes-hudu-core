@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.3.0] - 2026-09-12
+
+### Changed
+- **API alignment with Hudu 2.45.1** (reference: `api-docs-v2.45.1.json`). Activity Logs `resource_type` is now a server-side filter — selecting only *Resource Type* no longer pages through all logs and filters client-side (2.44.2-era workaround removed). `resource_id` still requires `resource_type` and is ignored on its own.
+- Activity Logs `resource_id`/`resource_type` UI descriptions updated to the 2.45.1 semantics; README API compatibility line now **2.45.1**.
+
 ## [2.2.0] - 2026-08-08
 
 ### Added
