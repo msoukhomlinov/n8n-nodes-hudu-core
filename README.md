@@ -96,6 +96,14 @@ To use this node, you need to:
 ### Expirations
 - Get all expirations with comprehensive filtering (company, expiration type, resource ID/type, date ranges)
 
+### Flag Types
+- Full CRUD for flag type definitions (name, color)
+- Filters: name, color, slug, created_at, updated_at; supports pagination
+
+### Flags
+- Full CRUD for applying flag types to records (assets, websites, articles, companies, and other supported types)
+- Filters: flag_type_id, flagable_type, flagable_id, description, created_at, updated_at; supports pagination
+
 ### Folders
 - Create and manage document folders
 - Support for nested folder structures
