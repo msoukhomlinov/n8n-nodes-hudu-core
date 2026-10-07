@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.4.0] - 2026-10-08
+
+### Added
+- **Flag Types resource** — full CRUD against `/flag_types` (name, color), with a 14-colour dropdown (full-edition issue #52, `msoukhomlinov/n8n-nodes-hudu`).
+- **Flags resource** — full CRUD against `/flags` (apply a flag type to a record via `flagable_type` / `flagable_id`, optional description), with a flag-type picker and 11 supported record types (full-edition issue #52, `msoukhomlinov/n8n-nodes-hudu`).
+
 ## [2.3.0] - 2026-09-12
 
 ### Changed
