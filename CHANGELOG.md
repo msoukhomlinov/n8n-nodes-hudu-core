@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.4.1] - 2026-10-10
+
+### Fixed
+- **Record IDs are validated before building request paths** (this repo's issue #5; full-edition issue #53, `msoukhomlinov/n8n-nodes-hudu`). Every ID read from a node parameter and placed in a Hudu API path (record IDs, parent/company IDs, procedure template IDs, asset layout IDs in option loaders) must now be a positive integer; values such as `12abc`, `../x`, `-1`, `1.5` or `1?x=y` are rejected with a clear error before any request is sent. This now covers the shared Get/Update/Delete/Archive/procedure helpers and the handlers that build paths themselves (Photos, Public Photos, Uploads, Procedures *Create from Template* / *Duplicate*, Assets *Archive* / *Delete* / *Move Layout*). As a second layer, the request utility refuses any endpoint that is not a plain `/segment/segment` path of letters, digits and underscores. The separate per-resource ID checks in Flags, Flag Types and Labels now use the same shared helper, so their error message wording has changed.
+- **List Options: the List field value is read with `extractValue`**, so a resource-locator value resolves to its ID rather than an object.
+
 ## [2.4.0] - 2026-10-08
 
 ### Added
