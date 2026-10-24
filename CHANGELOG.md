@@ -1,6 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.5.0] - 2026-10-25
+
+### Added
+- **Aligned with Hudu API 2.48.1** (reference: `api-docs-v2.48.1.json`), ported from full-edition 2.14.0 (`msoukhomlinov/n8n-nodes-hudu`).
+- **Articles: Pin / Unpin** operations (`PUT /articles/{id}/pin` and `/unpin`). Articles also expose `list_pinned`.
+- **Password Shares** resource: Create, Get, Get Many and Delete for `/asset_passwords/{id}/shares`. Create requires `expire_in` (seconds), capped at 1 year so never-expire links are not possible.
+- **Asset layout fields: Number display options** `number_type` (`number`, `currency`, `percentage`) and `currency_code` (required when `number_type` is `currency`), in Asset Layouts and Asset Layout Fields.
+- Websites: `potentially_proxied` and `cloudflare_details` fields.
+
+### Fixed
+- Asset Layout Fields: Create ignores a client-supplied `id`, and Update always writes to the located field even if the update fields carry a different `id`.
+
 ## [2.4.1] - 2026-10-10
 
 ### Fixed
