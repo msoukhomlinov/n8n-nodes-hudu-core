@@ -27,11 +27,16 @@ toolchain and are not shippable or fixable from this repo.
 | `@n8n/scan-community-package` | advisory range `0.2.0-0.9.5 \|\| >=0.10.0` (via `tmp` <0.2.6 + `eslint-plugin-community-nodes`) covers every modern version incl. 0.40.0; npm's "fix" is a downgrade to 0.9.8 — no published version escapes; kept at `^0.40.0` for gate currency (the 0.40.0 generation enforces `no-overrides-field`) — joins the platform-chain reject class |
 | `undici` | all 6.x/7.x lines fully vulnerable; fix only in 8.x — cross-major inside `release-it`'s tree (its only home here) |
 | `proxy-agent` / `pac-proxy-agent` / `get-uri` | vulnerable ranges `>=6.0.0` — no fixed version published at all (dead-end, via `release-it`) |
-| `basic-ftp` / `stream-json` / `uuid` | fixes only in new majors (6.2.x / 3.5.1+ / 11.1.1+); installed 5.3.1 / 1.9.1 / 10.0.0 |
-| `brace-expansion` | fixed 5.0.12 exists within-major, but the only delivery mechanism (npm override) is forbidden by the gate; a global pin also breaks the scanner's nested `minimatch@3.1.5` (verified) |
+| `basic-ftp` / `stream-json` / `uuid` / `js-yaml` | fixes only in new majors (6.2.x / 3.5.1+ / 11.1.1+ / v5); installed 5.3.1 / 1.9.1 / 10.0.0 / 4.3.0 |
+| `brace-expansion` / `qs` | fixed within-major versions exist (5.0.12 / 6.16.1), but the only delivery mechanism (npm override) is forbidden by the gate; a global brace-expansion pin also breaks the scanner's nested `minimatch@3.1.5` (verified) |
 | `release-it` chain | even 21.1.1 still pulls the undici / proxy-agent / basic-ftp chain; no published `release-it` escapes it |
 
 Residual after the 2.5.1 dev-toolchain pins: see `npm-audit-postfix.json` in the run
 dir (`/tmp/hudu-core-2.5.1-audit`) — expected floor is the table above plus the
 `handlebars` critical carried by `@n8n/node-cli` 0.39.3 (fixed only in an n8n platform
 release; the exact pin keeps the build gate deterministic on fresh installs).
+
+All remaining flagged packages reduce to the documented leaf causes above — the axios,
+`@n8n/utils`, zod and uuid leaves, the `release-it` chain, the `tmp` leaf, and the
+`handlebars` critical carried by `@n8n/node-cli` — so the entire 38-residual set
+(2 critical / 32 high / 4 moderate) is documented in this file.
