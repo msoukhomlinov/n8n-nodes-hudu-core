@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - Pin `@n8n/node-cli` to `0.39.3` so fresh installs cannot drift onto a build-breaking release (the `*` wildcard resolved to a CLI whose build pipeline breaks on this repo's tsconfig).
 - Bump `@n8n/scan-community-package` to `^0.40.0`.
 - Add `.audit/` config + `audit-notes.md` documenting the dev-only residual advisories.
+- Make the build deterministic on fresh installs: pin `typescript` to `6.0.3` and add `"ignoreDeprecations": "6.0"` to the tsconfig, because the dev toolchain now resolves a TypeScript 6 `tsc` binary on clean installs (fresh CI builds failed with TS5107 on `moduleResolution: node10`). Compiled output is unchanged.
 
 ## [2.5.0] - 2026-10-24
 
