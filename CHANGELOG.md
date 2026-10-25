@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [2.5.0] - 2026-10-25
+## [2.5.0] - 2026-10-24
 
 ### Added
 - **Aligned with Hudu API 2.48.1** (reference: `api-docs-v2.48.1.json`), ported from full-edition 2.14.0 (`msoukhomlinov/n8n-nodes-hudu`).
