@@ -6,7 +6,7 @@ This community node enables seamless integration with the Hudu documentation pla
 
 > **What "Core" means:** this is the lean, **zero-runtime-dependency** edition of the Hudu node — the same `Hudu` REST API coverage as the full **[n8n-nodes-hudu](https://github.com/msoukhomlinov/n8n-nodes-hudu)**, minus the dedicated AI Tools node. Having zero dependencies is what lets it pass n8n's community-node verification and be installed on **n8n Cloud** (the hosted n8n platform at n8n.io). It talks to the same Hudu REST API whether your Hudu instance is self-hosted or Hudu-hosted. (Formerly published as `n8n-nodes-hudu-cloud`.)
 
-> **API Compatibility:** This node is aligned with Hudu API version 2.45.1 (reference: `api-docs-v2.45.1.json` in this repository). Some features require specific API versions. Compatibility with future Hudu versions is not guaranteed without further updates.
+> **API Compatibility:** This node is aligned with Hudu API version 2.48.1 (reference: `api-docs-v2.48.1.json` in this repository). Some features require specific API versions. Compatibility with future Hudu versions is not guaranteed without further updates.
 
 > **Note — Hudu AI Tools not included in this edition:** the dedicated **Hudu AI Tools** node (the `HuduAiTools` supplyData tool / MCP Server Trigger tool) is **not** part of this package. For the full feature set, including that dedicated AI Tools node, see **[n8n-nodes-hudu](https://github.com/msoukhomlinov/n8n-nodes-hudu)** (self-hosted). This package, `n8n-nodes-hudu-core`, is the n8n Cloud–verifiable edition and still supports **AI Agent tool use** via the main **Hudu** node's `usableAsTool` capability — every resource/operation on the Hudu node is automatically exposed to AI agents, no separate node required.
 
@@ -56,7 +56,7 @@ To use this node, you need to:
 - Get API information and version details
 
 ### Articles
-- Create, update, archive, unarchive, delete, and retrieve articles
+- Create, update, archive, unarchive, pin, unpin, delete, and retrieve articles
 - Get operation supports numeric ID or slug selection via Identifier Type toggle
 - List all articles with comprehensive filtering (company, draft, sharing, folder, name, fuzzy search, updated date range)
 - Get article version history
@@ -74,7 +74,7 @@ To use this node, you need to:
 - Get operation supports numeric ID or slug selection via Identifier Type toggle
 - Get layout fields and configurations
 - List all layouts with filtering support
-- **Advanced custom field support:** Add hints, min/max, linkable asset layout IDs, expiration, options, and more to your custom fields. Use the "Other Data" input to specify any additional API-supported properties
+- **Advanced custom field support:** Add hints, min/max, number type (number/currency/percentage) with currency code, linkable asset layout IDs, expiration, options, and more to your custom fields. Use the "Other Data" input to specify any additional API-supported properties
 
 ### Asset Passwords
 - Create and manage asset-related passwords
@@ -148,6 +148,11 @@ To use this node, you need to:
 - Security modes: all users or specific groups (`allowed_groups` when `security = specific`)
 - Filter by name, company, search
 - Pick allowed groups with an option loader
+
+### Password Shares
+- Create, list, get, and delete time-limited public sharing links for asset passwords
+- Required `expire_in` (seconds); optional notes, one-time expire, and include_* visibility flags
+- Response includes the public `url` ready to send to a recipient
 
 ### Exports
 - Initiate company exports with format options: PDF, CSV, or S3

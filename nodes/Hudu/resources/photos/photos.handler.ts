@@ -1,12 +1,17 @@
 import type { IExecuteFunctions, IDataObject, IHttpRequestMethods } from 'n8n-workflow';
-import { huduApiRequest, handleListing, handleBinaryDownload, coercePositiveInt } from '../../utils';
+import {
+	huduApiRequest,
+	handleListing,
+	handleBinaryDownload,
+	coercePositiveInt,
+	processDateRange,
+} from '../../utils';
 import {
 	handleGetOperation,
 	handleDeleteOperation,
 } from '../../utils/operations';
 import type { PhotoOperation } from './photos.types';
 import { HUDU_API_CONSTANTS } from '../../utils/constants';
-import { processDateRange } from '../../utils/index';
 import type { DateRangePreset } from '../../utils/dateUtils';
 
 export async function handlePhotoOperation(
