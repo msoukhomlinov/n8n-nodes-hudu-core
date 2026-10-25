@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-hudu-core",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "n8n Cloud-verifiable node for Hudu's API (zero runtime dependencies). For full features including AI Tools, use n8n-nodes-hudu (self-hosted).",
   "keywords": [
     "n8n-community-node-package",
@@ -54,8 +54,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
-    "@n8n/node-cli": "*",
-    "@n8n/scan-community-package": "^0.28.1",
+    "@n8n/node-cli": "0.39.3",
+    "@n8n/scan-community-package": "^0.40.0",
     "@types/node": "^20.17.50",
     "eslint": "^9.39.4",
     "n8n-workflow": "^2.12.0",

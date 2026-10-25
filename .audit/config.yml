@@ -1,0 +1,8 @@
+version_surfaces:
+  - file: package.json
+    pattern: '"version":\s*"([^"]+)"'
+publish:
+  registry: npm
+  package: n8n-nodes-hudu-core
+active:
+  issues: [2]
