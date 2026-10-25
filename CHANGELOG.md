@@ -1,6 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+## [2.5.1] - 2026-10-24
+
+### Changed
+- Pin `@n8n/node-cli` to `0.39.3` so fresh installs cannot drift onto a build-breaking release (the `*` wildcard resolved to a CLI whose build pipeline breaks on this repo's tsconfig).
+- Bump `@n8n/scan-community-package` to `^0.40.0`.
+- Add `.audit/` config + `audit-notes.md` documenting the dev-only residual advisories.
+
 ## [2.5.0] - 2026-10-24
 
 ### Added
