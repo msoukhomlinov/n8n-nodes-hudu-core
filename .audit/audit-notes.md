@@ -28,15 +28,22 @@ toolchain and are not shippable or fixable from this repo.
 | `undici` | all 6.x/7.x lines fully vulnerable; fix only in 8.x — cross-major inside `release-it`'s tree (its only home here) |
 | `proxy-agent` / `pac-proxy-agent` / `get-uri` | vulnerable ranges `>=6.0.0` — no fixed version published at all (dead-end, via `release-it`) |
 | `basic-ftp` / `stream-json` / `uuid` / `js-yaml` | fixes only in new majors (6.2.x / 3.5.1+ / 11.1.1+ / v5); installed 5.3.1 / 1.9.1 / 10.0.0 / 4.3.0 |
+| `follow-redirects` | 2 GHSAs (`>=1.16.0 <1.16.1`, installed 1.16.0) carried by the axios subtree (`axios@1.20.0` under `@n8n/scan-community-package`, `axios@1.18.0` under `@n8n/backend-network`); 1.16.1 is in-range, and `package-lock.json` is gitignored, so a fresh install resolves it - the stale instance is a local dev-tree artifact only |
+| `ip-address` | 8 GHSAs (`<=10.7.3`, installed 10.2.0) carried by `socks@2.8.9` <- `socks-proxy-agent` <- `pac-proxy-agent` <- `proxy-agent` <- `release-it`; in-range fixes exist (registry 10.7.5) and the same untracked-lockfile caveat applies |
+| `nanoid` | 3 GHSAs (`<3.3.18`, installed 3.3.8) carried by `@n8n/utils@1.38.1` under `@n8n/node-cli` 0.39.3; npm's "fix" is the `n8n-workflow` downgrade to 1.75.1 |
 | `brace-expansion` / `qs` | fixed within-major versions exist (5.0.12 / 6.16.1), but the only delivery mechanism (npm override) is forbidden by the gate; a global brace-expansion pin also breaks the scanner's nested `minimatch@3.1.5` (verified) |
 | `release-it` chain | even 21.1.1 still pulls the undici / proxy-agent / basic-ftp chain; no published `release-it` escapes it |
 
-Residual after the 2.5.1 dev-toolchain pins: see `npm-audit-postfix.json` in the run
-dir (`/tmp/hudu-core-2.5.1-audit`) — expected floor is the table above plus the
-`handlebars` critical carried by `@n8n/node-cli` 0.39.3 (fixed only in an n8n platform
-release; the exact pin keeps the build gate deterministic on fresh installs).
+Residual after the 2.5.1 dev-toolchain pins: the table above is the complete documented
+set — verify current state with `npm audit` in the repo (the lockfile is gitignored, so
+the set reflects the local install snapshot; a fresh install resolves the in-range fixes
+listed above). The `handlebars` critical is carried by `@n8n/node-cli` 0.39.3 and is
+fixed only in an n8n platform release; the exact pin keeps the build gate deterministic
+on fresh installs.
 
 All remaining flagged packages reduce to the documented leaf causes above — the axios,
-`@n8n/utils`, zod and uuid leaves, the `release-it` chain, the `tmp` leaf, and the
-`handlebars` critical carried by `@n8n/node-cli` — so the entire 38-residual set
-(2 critical / 32 high / 4 moderate) is documented in this file.
+`follow-redirects`, `ip-address` (release-it chain), `nanoid`/`@n8n/utils`, zod and uuid
+leaves, the `release-it` chain, the `tmp` leaf, and the `handlebars` critical carried by
+`@n8n/node-cli` — so the entire 38-residual set (2 critical / 32 high / 4 moderate) is
+documented in this file. `package-lock.json` is gitignored, so this set is a local
+dev-tree snapshot; a fresh install resolves the in-range fixes above.
