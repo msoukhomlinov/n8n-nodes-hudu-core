@@ -47,3 +47,13 @@ leaves, the `release-it` chain, the `tmp` leaf, and the `handlebars` critical ca
 `@n8n/node-cli` — so the entire 38-residual set (2 critical / 32 high / 4 moderate) is
 documented in this file. `package-lock.json` is gitignored, so this set is a local
 dev-tree snapshot; a fresh install resolves the in-range fixes above.
+## 2026-10-25 — audit scoped to the shipped surface
+
+Re-verified on the 2.5.1 tree: `npm audit --omit=dev` reports **0 vulnerabilities**,
+confirming the entire residual set above lives in the dev toolchain. The repo audit now
+runs npm audit with `audit.npm.omit: [dev]` (`.audit/config.yml`), so the verdict
+reflects only the non-dev tree — zero runtime deps, and the `n8n-workflow` peer is not
+resolved in a dev-omitted audit. Dependabot alerts on the manifest (which do cover the
+peer) remain the standing watch item; re-run the plain `npm audit` above if the dev
+toolchain is bumped.
+

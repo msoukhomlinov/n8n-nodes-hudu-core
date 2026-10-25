@@ -4,5 +4,9 @@ version_surfaces:
 publish:
   registry: npm
   package: n8n-nodes-hudu-core
+audit:
+  npm:
+    omit: [dev]        # zero runtime deps by design; dev-tree residuals are documented
+                       # rejects in audit-notes.md — only the shipped surface drives the verdict
 active:
   issues: [2]
